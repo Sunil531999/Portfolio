@@ -38,20 +38,7 @@
                         <br><br>
                         I am seeking opportunities to apply my skills and contribute to innovative technologies in a professional environment.
                     </p>
-                    <div class="social-links">
-                        <a href="https://github.com/Sunil531999" target="_blank">
-                            <img src="https://github.com/fluidicon.png" alt="GitHub">
-                            <span>GitHub</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/sunil-kumar-sharma-12a424237/" target="_blank">
-                            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://leetcode.com/sunil53/" target="_blank">
-                            <img src="https://leetcode.com/_next/static/images/logo-ff2b712834cf26bf50a5de58ee27bcef.png" alt="LeetCode">
-                            <span>LeetCode</span>
-                        </a>
-                    </div>
+                    <div class="social-links"></div>
                 </div>
                 <div class="right-section">
                     <div class="profile-image">
@@ -301,22 +288,38 @@
                 <div class="footer-name">Sunil Kumar Sharma</div>
                 <div class="footer-title">Computer Science Engineer</div>
             </div>
-            <div class="footer-links">
-                <a href="https://github.com/Sunil531999" target="_blank">
-                    <img src="https://github.com/fluidicon.png" alt="GitHub">
-                    <span>GitHub</span>
-                </a>
-                <a href="https://www.linkedin.com/in/sunil-kumar-sharma-12a424237/" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
-                    <span>LinkedIn</span>
-                </a>
-                <a href="https://leetcode.com/sunil53/" target="_blank">
-                    <img src="https://leetcode.com/_next/static/images/logo-ff2b712834cf26bf50a5de58ee27bcef.png" alt="LeetCode">
-                    <span>LeetCode</span>
-                </a>
-            </div>
+            <div class="footer-links"></div>
         </footer>
     </div>
+
+    <!-- Create a template for social links that's used in both bio section and footer -->
+    <template id="social-links">
+        <a href="https://github.com/Sunil531999" target="_blank">
+            <img src="https://github.com/fluidicon.png" alt="GitHub">
+            <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/sunil-kumar-sharma-12a424237/" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+            <span>LinkedIn</span>
+        </a>
+        <a href="https://leetcode.com/sunil53/" target="_blank">
+            <img src="https://leetcode.com/_next/static/images/logo-ff2b712834cf26bf50a5de58ee27bcef.png" alt="LeetCode">
+            <span>LeetCode</span>
+        </a>
+    </template>
+
+    <!-- Then use JavaScript to clone this template where needed -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const socialTemplate = document.getElementById('social-links');
+        const socialContainers = document.querySelectorAll('.social-links, .footer-links');
+        
+        socialContainers.forEach(container => {
+            container.appendChild(socialTemplate.content.cloneNode(true));
+        });
+    });
+    </script>
+
     <script src="script.js"></script>
 </body>
 </html>
