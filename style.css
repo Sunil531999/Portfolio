@@ -1154,3 +1154,81 @@ main {
     gap: 0.5rem;
     min-height: 40px; /* Added to maintain consistent height */
 }
+
+/* Add these styles to your existing CSS file */
+.researcher-id {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.orcid-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #A6CE39;  /* ORCID's official green color */
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.orcid-link:hover {
+    background: rgba(166, 206, 57, 0.1);  /* ORCID green with transparency */
+    transform: translateY(-2px);
+}
+
+.orcid-link i {
+    font-size: 1.3rem;
+}
+
+/* Add Scopus link styles */
+.scopus-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #E9711C;  /* Scopus orange color */
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.scopus-link:hover {
+    background: rgba(233, 113, 28, 0.1);  /* Scopus orange with transparency */
+    transform: translateY(-2px);
+}
+
+.scopus-link i {
+    font-size: 1.3rem;
+}
+
+/* Update project links to accommodate ORCID icon */
+.project-links {
+    gap: 1rem;  /* Add space between icons */
+}
+
+.project-links a[title="ORCID Profile"] {
+    color: #A6CE39;  /* ORCID's official green color */
+}
+
+.project-links a[title="ORCID Profile"]:hover {
+    color: #96BC34;  /* Slightly darker shade for hover */
+}
+
+/* Add Scopus icon styles */
+.project-links a[title="Scopus Profile"] {
+    color: #E9711C;  /* Scopus orange color */
+}
+
+.project-links a[title="Scopus Profile"]:hover {
+    color: #D66116;  /* Slightly darker shade for hover */
+}
