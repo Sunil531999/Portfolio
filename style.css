@@ -1,200 +1,292 @@
 :root {
-  --dark-background: #171c28;
-  --light-text: #ffffff;
-  --primary-color: #55198b;
-  --secondary-color: #00bcd4;
-  --gradient-purple: linear-gradient(90deg, #8752f3, #5c4c8d);
-  --text-gradient: linear-gradient(90deg, #4ca5ff 2.34%, #b673f8 100.78%);
+    --primary-color: #64ffda;
+    --secondary-color: #112240;
+    --text-color: #ccd6f6;
+    --heading-color: #e6f1ff;
+    --background-color: #0a192f;
+    --card-background: rgba(17, 34, 64, 0.7);
+    --hover-color: #64ffda;
+    --light-text: #e6f1ff;
+    --dim-text: #8892b0;
+    --text-gradient: linear-gradient(135deg, #64ffda, #38bdf8);
+    --card-border: rgba(100, 255, 218, 0.1);
+    --nav-background: rgba(10, 25, 47, 0.85);
 }
 
 * {
     margin: 0;
     padding: 0;
-    border: border-box;
+    box-sizing: border-box;
+    font-family: 'Fira Code', monospace;
 }
+
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #0a192f; /* Dark background color */
-    color: var(--light-text);
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
-/* Remove or comment out the gradient animation */
-/*
-background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-background-size: 400% 400%;
-animation: gradient 15s ease infinite;
-*/
+/* Remove particles.js section as it's now covered by the new background */
 
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
 #particles-js {
     position: fixed;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
+    background: var(--background-color);
+    background-image: 
+        radial-gradient(rgba(100, 255, 218, 0.1) 1px, transparent 1px),
+        radial-gradient(rgba(100, 255, 218, 0.1) 1px, transparent 1px);
+    background-position: 0 0, 25px 25px;
+    background-size: 50px 50px;
     z-index: 1;
 }
+
 .content-wrapper {
     position: relative;
     z-index: 2;
+    overflow-x: hidden;
 }
+
 header {
-    padding: 1rem 5%;
+    padding: 20px 50px;
     position: fixed;
     width: 100%;
     top: 0;
-    background: transparent; /* Change this from rgba value */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    justify-content: space-between; /* Changed from flex-end */
-    align-items: center;
-    padding: 30px 5%; /* Reduced padding */
+    background: var(--nav-background);
+    backdrop-filter: blur(10px);
     z-index: 1000;
-    box-sizing: border-box; /* Added to fix width issues */
 }
 
-/* Optional: Make header more visible on scroll */
-/* Delete or comment out this block:
-header:hover {
-    background: rgba(23, 28, 40, 0.5);
-}
-*/
-
-#portfolio {
-    font-family: 'Trebuchet MS', sans-serif;
-    color: white;
-    font-size: 35px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-right: auto;
-    margin-left: 30px; /* Added this line to move text right */
-    position: relative;
-    transition: all 0.3s ease;
-    margin: 0;
-    padding: 0;
-}
-
-#portfolio:hover {
-    color: white;
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-}
-
-/* Remove or comment out this block as it was changing text color to gradient
-#portfolio:hover {
-    background: var(--text-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-*/
-
-#portfolio::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--text-gradient);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-}
-
-#portfolio:hover::after {
-    transform: scaleX(1);
-}
-
-li, a {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 700px;
-    align-items: center;
-    background: transparent;
-}
 .nav_links {
     display: flex;
-    justify-content: space-between; /* Changed from flex-end */
-    align-items: center;
-    gap: 1.5rem; /* Reduced gap to accommodate new button */
+    justify-content: flex-end;
     list-style: none;
-    background: transparent; /* Add this line */
-    margin-left: auto; /* Added to push links to right */
-    padding-right: 20px; /* Added some padding */
-    margin: 0;
-    padding: 0;
+    gap: 2rem;
 }
-.nav_links li {
-    display: inline-block;
-    padding: 0px 10px; /* Reduced padding */
-    margin-left: 10px; /* Reduced margin */
-    padding: 0;
-    margin: 0;
-}
-.nav_links li a {
-    display: flex;
-    flex-wrap: wrap;
-    transition: all 0.3s ease 0s;
-    font-size: 0.85rem; /* Slightly smaller font size */
-    padding: 0.5rem 0.8rem; /* Adjusted padding */
-    white-space: nowrap;
-}
+
 .nav_links a {
+    color: var(--heading-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.nav_links a:hover {
+    color: var(--primary-color);
+}
+
+.main-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 150px;
+    gap: 2rem;
+}
+
+.greeting-text-p {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.main-title {
+    font-size: 70px;
+    line-height: 1.1;
+    font-weight: bold;
+    margin-top: 20px;
+    color: var(--heading-color);
+    text-shadow: 0 0 30px rgba(100, 255, 218, 0.1);
+}
+
+.role-title {
+    font-size: 30px;
+    font-weight: 400;
+    margin-top: 10px;
     color: var(--light-text);
+}
+
+.profile-image img {
+    width: 300px;
+    border-radius: 10px;
+    border: 2px solid var(--primary-color);
+    transition: transform 0.3s;
+}
+
+.profile-image img:hover {
+    transform: scale(1.05);
+}
+
+.section-heading {
+    color: var(--heading-color);
+    position: relative;
+}
+
+.section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--text-gradient);
+    border-radius: 2px;
+}
+
+.section-spacing {
+    padding: 100px 150px;
+}
+
+.skill-tag {
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--primary-color);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin: 5px;
+    display: inline-block;
+}
+
+.project-card, .experience-card, .education div, .publication-card {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover, .experience-card:hover, .education div:hover, .publication-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 20px rgba(100, 255, 218, 0.1);
+    transform: translateY(-5px);
+}
+
+.project-card h2 {
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--heading-color);
+    margin-right: 1rem;
+    font-size: 1.5rem;
     text-decoration: none;
     transition: color 0.3s;
 }
-.nav_links a:hover {
-    color: var(--secondary-color);
+
+.social-links a:hover {
+    color: var(--primary-color);
 }
-.nav_links li a:hover {
-    transform: scale(1.1);
-    color: var(--light-text); /* Keep color white */
-}
-.dp {
-    width: 100%;
-    filter: grayscale(100%);
-    display: block;
-    position: relative;
-}
-.box {
-    width: 20%;
-    height: 20%;
-    position: relative;
-    margin: 50px auto;
-    max-width: 300px;
-    border-bottom: 20px solid var(--primary-color);
-    z-index: -1;
-    margin: 2rem auto;
-    max-width: 800px;
-    padding: 1rem;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.box img {
-    border: 4px solid var(--primary-color);
-    transition: transform 0.3s;
-    display: block;
+
+form {
+    max-width: 600px;
     margin: 0 auto;
-    border-radius: 50%;
-    width: 150px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: var(--card-background);
+    border: 1px solid var(--text-color);
+    color: var(--heading-color);
+    border-radius: 5px;
+}
+
+button {
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+}
+
+footer {
+    background: var(--card-background);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.footer-left {
+    flex: 1;
+}
+
+.footer-name {
+    color: var(--heading-color);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.footer-title {
+    color: var(--primary-color);
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.footer-links a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--light-text);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.footer-links a:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-color);
+}
+
+.footer-links img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .main-section {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+    
+    .section-spacing {
+        padding: 50px 20px;
+    }
+    
+    footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+        gap: 1.5rem;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
     height: 150px;
 }
 .box img:hover {
@@ -229,13 +321,11 @@ li, a {
     display: block;
 }
 
-.bio {
-    color: var(--light-text);
+.bio, .about-text {
+    color: var(--text-color);
     font-size: 16px;
-    line-height: 1.6;
-    margin-top: 20px;
-    max-width: 800px;
-    opacity: 0.9;
+    line-height: 1.8;
+    opacity: 0.95;
 }
 
 .bio br {
@@ -270,66 +360,52 @@ li, a {
 
 .projects {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    padding: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
     margin: 0 auto;
     max-width: 1200px;
-    background: transparent;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
 }
 
 .project-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    background: var(--card-background);
     padding: 2rem;
     border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--card-border);
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    height: fit-content; /* Changed from 100% */
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    border-color: var (--secondary-color);
-    background: rgba(255, 255, 255, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card h2 {
-    color: var(--light-text); /* Changed from gradient */
+    color: var(--heading-color);
+    font-size: 1.4rem;
     margin-bottom: 1rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-}
-
-/* Remove these conflicting properties if they exist */
-.project-card h2 {
-    background: none;
-    -webkit-background-clip: initial;
-    -webkit-text-fill-color: initial;
+    font-weight: 600;
 }
 
 .project-card p {
-    color: var(--light-text);
-    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    font-size: 1rem;
     line-height: 1.6;
-    opacity: 0.9;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.skills-tags {
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .project-links {
     display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1.5rem;
+    gap: 1.2rem;
+    margin-top: auto;
     padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .project-links a {
@@ -339,38 +415,115 @@ li, a {
 }
 
 .project-links a:hover {
-    transform: scale(1.1);
-    color: var(--light-text);
+    color: var(--primary-color);
+    transform: translateY(-2px);
 }
 
-.project-links a i {
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+#contact-me {
+    padding: 4rem 2rem;
 }
 
-.skills-tags {
+#contact-me form {
+    background: transparent;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3rem;  /* Increased padding */
+    max-width: 500px;  /* Slightly reduced for better proportions */
+    margin: 50px auto;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    flex-direction: column;
+    gap: 1.5rem;  /* Increased gap between elements */
 }
-.skill-tag {
-    background: rgba(85, 25, 139, 0.3);
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    color: #fff;
-    border: 1px solid var(--primary-color);
-}
-.projects div {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 1.5rem;
+
+#contact-me form input,
+#contact-me form textarea {
+    width: 100%;
+    padding: 1.2rem;  /* Increased padding */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    transition: transform 0.3s;
+    color: var(--light-text);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;  /* Added to fix sizing issues */
+    margin: 0;  /* Remove default margins */
 }
-.projects div:hover {
-    transform: translateY(-5px);
+
+#contact-me form textarea {
+    min-height: 150px;  /* Set minimum height for textarea */
+    resize: vertical;   /* Allow vertical resizing only */
+    margin-bottom: 0.5rem;  /* Added bottom margin */
 }
-.education {
+
+#contact-me form input:focus,
+#contact-me form textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.3);
+}
+
+#contact-me form button {
+    align-self: center;  /* Center the button */
+    margin-top: 1.5rem;
+    margin: 1.5rem auto 0;  /* Adjusted margin */
+    padding: 1rem 3rem;  /* Wider button */
+    min-width: 200px;
+    font-size: 1.1rem;
+}
+
+/* Remove redundant <br> spacing in the form */
+#contact-me form br {
+    display: none;
+}
+
+#contact-me form button {
+    display: block;
+    margin: 2rem auto 0;  /* Centers the button horizontally and adds top margin */
+}
+
+.email-text {
+    text-align: center;
+    color: var(--text-color);
+    font-size: 1rem;
+    margin: 1rem 0;
+}
+
+.email-text a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.email-text a:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+}
+
+/* Add styling for the divider */
+.divider {
+    text-align: center;
+    margin: 1.5rem 0;
+    color: var(--light-text);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.7;
+    margin: 2rem 0;  /* Increased margin */
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+/* Add styles for the publications section */
+.publications {
     background: transparent;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -381,7 +534,7 @@ li, a {
     margin: 50px auto;
 }
 
-.education div {
+.publication-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -392,267 +545,230 @@ li, a {
     transition: transform 0.3s ease;
 }
 
-.education div:hover {
+.publication-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     background: rgba(255, 255, 255, 0.1);
-    border-color: var(--secondary-color);
+    border-color: var(--primary-color);
 }
 
-.education h2 {
-    color: var(--secondary-color);
+.publication-card h2 {
+    color: var(--heading-color);
     margin-bottom: 10px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
 }
 
-.education h3 {
-    color: var(--light-text);
-    font-size: 1.2rem;
+.publication-card h3 {
+    color: var(--text-color);
+    font-size: 1.1rem;
     margin-bottom: 10px;
-    opacity: 0.9;
-    letter-spacing: 0.5px;
-    font-weight: 600;
+    line-height: 1.4;
 }
 
-.education pre {
-    font-family: 'Google Sans', sans-serif;
-    color: #ffffff; /* Much lighter grey */
-    background: rgba(255, 255, 255, 0.1); /* Slightly more visible background */
-    padding: 12px; /* Increased padding */
-    border-radius: 8px;
-    margin-top: 10px;
-    /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); */
-    font-weight: 500;
-    font-size: 1.1rem; /* Slightly larger text */
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+.publication-year {
+    color: var(--dim-text);
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-top: 0.5rem;
 }
 
-.education .score-label {
-    flex: 1;
-    text-align: left;
-}
-
-.education .score-value {
-    min-width: 80px;
-    text-align: right;
-    margin-left: 20px;
-}
-
-.education hr {
+.publications hr {
     border: none;
     height: 1px;
     background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
     margin: 1.5rem 0;
 }
 
-footer {
-    background: transparent;
-    padding: 2rem;
-    margin-top: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-left {
-    text-align: left;
-}
-
-.footer-name {
-    font-size: 1.5rem;
-    color: var(--light-text);
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.footer-title {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.footer-links {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-}
-
-.footer-links a {
-    display: flex;
+/* Add styles for the publication links */
+.publication-link {
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    margin-top: 1rem;
     color: var(--light-text);
     text-decoration: none;
     transition: all 0.3s ease;
-    padding: 0.5rem;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.05);
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.footer-links a:hover {
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.1);
+.publication-link:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.footer-links img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-}
-
-.footer-links span {
-    font-size: 0.9rem;
-}
-
-/* Remove these conflicting styles */
-footer form {
-    max-width: 600px;
-    margin: 3rem auto;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.05);
+/* Add styles for the experience section */
+.experience-container {
+    background: transparent;
     backdrop-filter: blur(10px);
-    border-radius: 20px;
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-footer form h1 {
-    color: var(--light-text);
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
-    background: var(--text-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-footer a {
-    margin: 0 1rem;
-}
-
-footer img {
-    vertical-align: middle;
-}
-
-form {
-    margin-top: 2rem;
-}
-
-form input, form textarea {
-    width: 100%;
-    padding: 1rem;
-    margin: 0.7rem 0;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    color: var(--light-text);
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-form input:focus, form textarea:focus {
-    outline: none;
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 15px rgba(0, 188, 212, 0.3);
-}
-
-form input::placeholder, 
-form textarea::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-    font-family: 'Google Sans', sans-serif;
-    font-size: 1rem;
-}
-
-form textarea {
-    font-family: 'Google Sans', sans-serif;
-    font-size: 1rem;
-}
-
-form input::placeholder, form textarea::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-    font-family: 'Google Sans', sans-serif;
-    font-size: 1rem;
-}
-
-form button {
-    background: var(--text-gradient);
-    color: white;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 30px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 1rem;
-    width: auto;
-    min-width: 200px;
-}
-
-form button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-button:hover {
-    background: var(--secondary-color);
-}
-
-/* Add section spacing utility class */
-.section-spacing {
-    margin: 100px 0;
-}
-
-.greeting-text-p {
-    font-size: 30px;
-    line-height: 40px;
-    margin-right: 40px;
-    font-weight: 400;
-    color: var(--light-text);
-}
-
-.bio {
-    color: var(--light-text);
-    font-size: 16px;
-    line-height: 1.6;
-    margin-top: 20px;
+    border-radius: 20px;
+    padding: 2rem;
     max-width: 800px;
-    opacity: 0.9;
+    margin: 50px auto;
 }
 
-.bio br {
+.experience-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.experience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-color);
+}
+
+.experience-card h2 {
+    color: var(--heading-color);
+    margin-bottom: 10px;
+}
+
+.experience-card h3 {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.experience-duration, .experience-location {
+    color: var(--dim-text);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.experience-details {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+}
+
+.experience-details li {
+    color: var(--light-text);
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+/* Add styles for the About Me section */
+.about-container {
+    background: transparent;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.about-text {
+    color: var(--light-text);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    text-align: justify;
+}
+
+.about-text br {
     display: block;
     content: "";
     margin-top: 10px;
 }
 
-.main-title {
-    font-size: 70px;
-    line-height: 1.1;
-    font-weight: bold;
-    margin-top: 20px;
-    background: var(--text-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* Add this to ensure consistent image sizes */
+.social-links a, .footer-links a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 40px; /* Added to maintain consistent height */
 }
 
-@keyframes borderGlow {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.6;
-    }
+/* Add these styles to your existing CSS file */
+.researcher-id {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
-.role-title {
-    font-size: 30px;
-    font-weight: 400;
-    margin-top: 10px;
-    color: rgba(255, 255, 255, 0.8);
+.orcid-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #A6CE39;  /* ORCID's official green color */
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
+.orcid-link:hover {
+    background: rgba(166, 206, 57, 0.1);  /* ORCID green with transparency */
+    transform: translateY(-2px);
+}
+
+.orcid-link i {
+    font-size: 1.3rem;
+}
+
+/* Add Scopus link styles */
+.scopus-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #E9711C;  /* Scopus orange color */
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.scopus-link:hover {
+    background: rgba(233, 113, 28, 0.1);  /* Scopus orange with transparency */
+    transform: translateY(-2px);
+}
+
+.scopus-link i {
+    font-size: 1.3rem;
+}
+
+/* Update project links to accommodate ORCID icon */
+.project-links a[title="ORCID Profile"] {
+    color: #A6CE39;  /* ORCID's official green color */
+}
+
+.project-links a[title="ORCID Profile"]:hover {
+    color: #96BC34;  /* Slightly darker shade for hover */
+}
+
+/* Add Scopus icon styles */
+.project-links a[title="Scopus Profile"] {
+    color: #E9711C;  /* Scopus orange color */
+}
+
+.project-links a[title="Scopus Profile"]:hover {
+    color: #D66116;  /* Slightly darker shade for hover */
+}
 .main-section {
     display: flex;
     justify-content: space-between;
@@ -821,7 +937,7 @@ main {
 
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     padding: 2rem;
     background: rgba(255, 255, 255, 0.05);
@@ -836,12 +952,15 @@ main {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    height: fit-content;
 }
 
 .skill-category h2 {
     color: var(--light-text);
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     font-size: 1.3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
 }
 
 .skill-items {
@@ -850,102 +969,99 @@ main {
     gap: 0.8rem;
 }
 
-#my-projects, #my-skills, #contact-me {
-    padding: 4rem 2rem;
+.skill-tag {
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--primary-color);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    display: inline-block;
+    white-space: nowrap;
+    transition: all 0.3s ease;
 }
 
-/* Update the contact form styles */
-#contact-me form {
+.skill-tag:hover {
+    background: rgba(100, 255, 218, 0.2);
+    transform: translateY(-2px);
+}
+
+.education {
     background: transparent;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 3rem;  /* Increased padding */
-    max-width: 500px;  /* Slightly reduced for better proportions */
+    padding: 2rem;
+    max-width: 800px;
     margin: 50px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;  /* Increased gap between elements */
 }
 
-#contact-me form input,
-#contact-me form textarea {
-    width: 100%;
-    padding: 1.2rem;  /* Increased padding */
+.education > div {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.education > div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    color: var(--light-text);
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    box-sizing: border-box;  /* Added to fix sizing issues */
-    margin: 0;  /* Remove default margins */
+    border-color: var(--primary-color);
 }
 
-#contact-me form textarea {
-    min-height: 150px;  /* Set minimum height for textarea */
-    resize: vertical;   /* Allow vertical resizing only */
-    margin-bottom: 0.5rem;  /* Added bottom margin */
+.education h2 {
+    color: var(--heading-color);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
 }
 
-#contact-me form input:focus,
-#contact-me form textarea:focus {
-    outline: none;
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 15px rgba(0, 188, 212, 0.3);
-}
-
-#contact-me form button {
-    align-self: center;  /* Center the button */
-    margin-top: 1.5rem;
-    margin: 1.5rem auto 0;  /* Adjusted margin */
-    padding: 1rem 3rem;  /* Wider button */
-    min-width: 200px;
-    font-size: 1.1rem;
-}
-
-/* Remove redundant <br> spacing in the form */
-#contact-me form br {
-    display: none;
-}
-
-#contact-me form button {
-    display: block;
-    margin: 2rem auto 0;  /* Centers the button horizontally and adds top margin */
-}
-
-.email-text {
-    text-align: center;
-    color: var(--light-text);
-    font-size: 0.9rem;
-    margin: 0;
-    margin-top: 0.5rem;  /* Added top margin */
-}
-
-.email-text a {
-    color: var(--secondary-color);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.email-text a:hover {
+.education h2 i {
     color: var(--primary-color);
 }
 
-/* Add styling for the divider */
-.divider {
-    text-align: center;
-    margin: 1.5rem 0;
-    color: var(--light-text);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    opacity: 0.7;
-    margin: 2rem 0;  /* Increased margin */
+.education h3 {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
 }
 
-.divider::before,
+.education pre {
+    font-family: 'Fira Code', monospace;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.education .score-label {
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.education .score-value {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.education hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+    margin: 1.5rem 0;
+}
 .divider::after {
     content: '';
     flex: 1;
@@ -980,25 +1096,25 @@ main {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     background: rgba(255, 255, 255, 0.1);
-    border-color: var(--secondary-color);
+    border-color: var(--primary-color);
 }
 
 .publication-card h2 {
-    color: var(--secondary-color);
+    color: var(--heading-color);
     margin-bottom: 10px;
     font-size: 1.3rem;
     font-weight: bold;
 }
 
 .publication-card h3 {
-    color: var(--light-text);
+    color: var(--text-color);
     font-size: 1.1rem;
     margin-bottom: 10px;
     line-height: 1.4;
 }
 
 .publication-year {
-    color: var(--light-text);
+    color: var(--dim-text);
     font-size: 1rem;
     opacity: 0.8;
     margin-top: 0.5rem;
@@ -1060,23 +1176,22 @@ main {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     background: rgba(255, 255, 255, 0.1);
-    border-color: var(--secondary-color);
+    border-color: var(--primary-color);
 }
 
 .experience-card h2 {
-    color: var(--secondary-color);
+    color: var(--heading-color);
     margin-bottom: 10px;
-    font-size: 1.5rem;
 }
 
 .experience-card h3 {
-    color: var(--light-text);
+    color: var(--text-color);
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
 .experience-duration, .experience-location {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--dim-text);
     font-size: 0.9rem;
     margin-bottom: 5px;
 }
@@ -1200,4 +1315,31 @@ main {
 
 .project-links a[title="Scopus Profile"]:hover {
     color: #D66116;  /* Slightly darker shade for hover */
+}
+
+.tech-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.tech-icon {
+    position: absolute;
+    font-size: 2rem;
+    color: var(--primary-color);
+    animation: float 8s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
 }
