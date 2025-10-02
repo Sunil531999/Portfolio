@@ -151,18 +151,12 @@ document.addEventListener('DOMContentLoaded', function() {
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         hamburger.classList.toggle('active'); // Also toggle the active class on the button
-        if (navLinks.classList.contains('active')) {
-            hamburger.innerHTML = '&times;'; // Change to 'X'
-        } else {
-            hamburger.innerHTML = '&#9776;'; // Change back to hamburger
-        }
     });
     // Close menu when a link is clicked
     document.querySelectorAll('.nav_links a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
             hamburger.classList.remove('active'); // Ensure the button's active class is also removed
-            hamburger.innerHTML = '&#9776;';
         });
     });
 
@@ -175,7 +169,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (navLinks.classList.contains('active') && !isClickInsideNav && !isClickOnHamburger) {
             navLinks.classList.remove('active');
             hamburger.classList.remove('active');
-            hamburger.innerHTML = '&#9776;';
         }
     });
 
