@@ -115,9 +115,9 @@ header {
 .main-title-cursor {
     display: inline-block;
     background-color: var(--primary-color);
-    width: 10px; /* Width of the cursor */
-    height: 60px; /* Match the font-size of .main-title */
-    animation: blink 1.8s infinite; /* Slower blink duration */
+    width: 3px; /* Give the cursor a specific width to be visible */
+    height: 54px; /* Adjust height to align with the text */
+    animation: blink 1s infinite;
 }
 
 @keyframes blink {
