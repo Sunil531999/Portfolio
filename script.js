@@ -74,13 +74,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Add smooth scrolling for navigation links
-    document.querySelectorAll('.nav_links a').forEach(anchor => {
+    document.querySelectorAll('.nav_links a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
             const sectionId = this.getAttribute('href');
-            document.querySelector(sectionId).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const section = document.querySelector(sectionId);
+            if (section) {
+                e.preventDefault();
+                section.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
