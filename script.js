@@ -1,5 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    function applyTypingEffect(selector, text, options = {}) {
+        const element = document.querySelector(selector);
+        if (!element) return;
+
+        const { speed = 150, useBrackets = false, cursorClass = 'typing-cursor' } = options;
+        
+        // Start with a blinking cursor in an empty element
+        element.innerHTML = `<span><span class="text"></span><span class="${cursorClass}"></span></span>`;
+
+        let i = 0;
+
+        function type() {
+            if (i < text.length) {
+                const currentText = text.substring(0, i + 1);
+                let content = `<span><span class="text">${currentText}</span><span class="${cursorClass}"></span></span>`;
+                if (useBrackets) {
+                    content = `<span class="bracket">&lt;</span>${content}`;
+                }
+                element.innerHTML = content;
+                i++;
+                setTimeout(type, speed);
+            } else {
+                // Keep the cursor blinking at the end of the text
+                element.innerHTML = `<span><span class="text">${text}</span><span class="${cursorClass}"></span></span>`;
+            }
+        }
+
+        type();
+    }
+
     particlesJS('particles-js',
     {
         "particles": {
@@ -73,6 +103,12 @@ document.addEventListener('DOMContentLoaded', function() {
         "retina_detect": true
     });
 
+    // Set up the portfolio title for the bracket reveal animation
+    const portfolioTitle = document.getElementById('portfolio');
+    portfolioTitle.innerHTML = `<span class="bracket left-bracket">&lt;</span><span class="portfolio-text">PORTFOLIO</span><span class="bracket right-bracket">&gt;</span>`;
+
+    applyTypingEffect('.main-title', 'Sunil Kumar Sharma', { speed: 150, cursorClass: 'main-title-cursor' });
+
     // Add smooth scrolling for navigation links
     document.querySelectorAll('.nav_links a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -89,16 +125,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Randomize tech icon positions and animations for the loading screen
     const techIcons = document.querySelectorAll('.tech-icon');
-    techIcons.forEach(icon => {
-        const randomTop = Math.random() * 100; // 0-100% of viewport height
-        const randomLeft = Math.random() * 100; // 0-100% of viewport width
-        const randomDelay = Math.random() * 5; // 0-5 seconds delay
-        const randomDuration = 8 + Math.random() * 7; // 8-15 seconds duration
-
-        icon.style.top = `${randomTop}vh`;
-        icon.style.left = `${randomLeft}vw`;
-        icon.style.animationDelay = `${randomDelay}s`;
-        icon.style.animationDuration = `${randomDuration}s, ${randomDuration}s`; // Apply to both float and fade-in-out
+    techIcons.forEach((icon) => {
+        // Randomize starting position
+        icon.style.top = `${Math.random() * 100}vh`;
+        icon.style.left = `${Math.random() * 100}vw`;
+    
+        // Randomize animation properties
+        const randomDuration = 8 + Math.random() * 12; // Duration between 8s and 20s
+        const randomDelay = Math.random() * 5; // Delay up to 5s
+        icon.style.animation = `float ${randomDuration}s ${randomDelay}s infinite ease-in-out, fade-in-out ${randomDuration}s ${randomDelay}s infinite ease-in-out`;
     });
 
     // Populate social links from the template
@@ -143,9 +178,53 @@ document.addEventListener('DOMContentLoaded', function() {
             hamburger.innerHTML = '&#9776;';
         }
     });
+
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Stop observing once it's visible
+            }
+        });
+    }, {
+        rootMargin: '0px',
+        threshold: 0.1 // Trigger when 10% of the element is visible
+    });
+
+    // Observe all elements with the .animate-on-scroll class
+    const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+    elementsToAnimate.forEach(el => observer.observe(el));
+
+    // Resume Modal functionality
+    const modal = document.getElementById('resume-modal');
+    const resumeBtn = document.getElementById('resume-modal-trigger');
+    const closeBtn = document.querySelector('.modal-close-button');
+
+    // When the user clicks the button, open the modal 
+    resumeBtn.onclick = function(e) {
+        e.preventDefault(); // Prevent default anchor behavior
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal content, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
 });
 
 // Hide loading screen only after all page content (including images) is fully loaded
 window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
+    // Add a delay to showcase the loading animation
+    setTimeout(function() {
+        document.body.classList.add('loaded');
+    }, 3000); // 3-second delay
 });

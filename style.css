@@ -59,9 +59,74 @@ header {
     align-items: center;
 }
 
-header h1#portfolio {
-    backdrop-filter: blur(10px);
-    z-index: 1000;
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#portfolio {
+    color: var(--heading-color);
+    font-size: 1.5rem; /* Example size, adjust as needed */
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 1.5rem; /* Match font-size to prevent layout shift */
+}
+
+#portfolio .portfolio-text {
+    padding: 0 0.5rem; /* Add space between text and brackets */
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fadeInText 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards;
+}
+
+#portfolio .bracket {
+    color: var(--primary-color);
+    will-change: transform; /* Performance optimization */
+}
+
+#portfolio .left-bracket {
+    /* Moves from center to left */
+    animation: moveLeft 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+#portfolio .right-bracket {
+    /* Moves from center to right */
+    animation: moveRight 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes moveLeft {
+    from { transform: translateX(50px); }
+    to { transform: translateX(0); }
+}
+
+@keyframes moveRight {
+    from { transform: translateX(-50px); }
+    to { transform: translateX(0); }
+}
+
+@keyframes fadeInText {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.main-title-cursor {
+    display: inline-block;
+    background-color: var(--primary-color);
+    width: 10px; /* Width of the cursor */
+    height: 60px; /* Match the font-size of .main-title */
+    animation: blink 1.8s infinite; /* Slower blink duration */
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
 
 .nav_links {
@@ -126,6 +191,9 @@ header h1#portfolio {
     color: var(--heading-color);
     text-shadow: 0 0 30px rgba(100, 255, 218, 0.1);
     margin-bottom: 0.5rem;
+    display: flex; /* Add flex display */
+    align-items: center; /* Vertically center content */
+    min-height: 60px; /* Prevent layout shift during typing animation */
 }
 
 .role-title {
@@ -973,43 +1041,38 @@ main {
 .loader {
     position: relative;
     display: flex;
-    
-    animation: roll 3s linear infinite;
+    gap: 2rem;
+    margin-bottom: 20px; /* Space between loader and text */
 }
 
-.loader span {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: var(--primary-color);
-    margin: 0 10px;
-    cursor: pointer;
-    animation: loading 1.8s linear infinite;
+.loader .loader-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    opacity: 0.3;
+    transform: scale(1);
+    animation: power-up 2.4s infinite ease-in-out;
 }
 
-.loader span:nth-child(1) {
+.loader .loader-icon:nth-child(1) {
     animation-delay: 0s;
 }
 
-@keyframes loading {
-    0% {
-       transform: translateY(0);
-    }
-    25% {
-        transform: translateY(-15px);
-    }
-    50%, 100% {
-        transform: translateY(0);
-    }
+.loader .loader-icon:nth-child(2) {
+    animation-delay: 0.8s;
 }
-@keyframes roll {
 
-    0% {
-        transform: rotate(0deg);
+.loader .loader-icon:nth-child(3) {
+    animation-delay: 1.6s;
+}
+
+@keyframes power-up {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
     }
-    100% {
-        transform: rotate(360deg);
+    33% { /* Icon is "on" for a third of the animation time */
+        opacity: 1;
+        transform: scale(1.2);
     }
 }
 
@@ -1049,24 +1112,18 @@ main {
 
 @keyframes float {
     0%, 100% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    25% {
-        transform: translate(10vw, -10vh) rotate(15deg);
+        transform: translateY(0);
     }
     50% {
-        transform: translate(-15vw, 15vh) rotate(-10deg);
-    }
-    75% {
-        transform: translate(5vw, -5vh) rotate(5deg);
+        transform: translateY(-20px);
     }
 }
 
 @keyframes fade-in-out {
-    0%, 100% { opacity: 0; }
-    10% { opacity: 0.2; }
-    50% { opacity: 0.4; }
-    90% { opacity: 0.1; }
+    0%, 100% { opacity: 0; }   /* Start and end invisible */
+    5% { opacity: 0.3; }     /* Fade in quickly */
+    50% { opacity: 0.5; }    /* Reach peak opacity mid-cycle */
+    95% { opacity: 0.2; }    /* Fade out slowly */
 }
 
 .loader {
@@ -1141,4 +1198,123 @@ body.loaded #loading-screen {
 
 .section-heading:hover::after {
     transform: scaleX(1);
+}
+
+/* Animation for elements on scroll */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform; /* Performance optimization */
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Resume Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(10, 25, 47, 0.8); /* Semi-transparent background */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+    background-color: var(--secondary-color);
+    margin: 4vh auto;
+    padding: 0; /* Remove padding to allow header to be full-width */
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    width: 90%;
+    max-width: 900px;
+    height: 92vh; /* Slightly increase height */
+    position: relative;
+    box-shadow: 0 5px 25px rgba(100, 255, 218, 0.2);
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack header and iframe vertically */
+    overflow: hidden; /* Hide anything that spills out of the rounded corners */
+}
+
+.modal-content iframe {
+    border: none;
+    border-radius: 5px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(10, 25, 47, 0.9); /* Slightly different from modal bg for depth */
+    border-bottom: 1px solid var(--card-border);
+    flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.modal-download-button {
+    color: var(--primary-color);
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-right: auto; /* Push to the far left */
+}
+
+.modal-download-button:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+}
+
+.modal-download-button i {
+    margin-right: 8px;
+}
+
+.modal-close-button {
+    color: var(--heading-color);
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
+    padding: 0 5px;
+}
+
+.modal-close-button:hover,
+.modal-close-button:focus {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.resume-iframe {
+    width: 100%;
+    height: 100%; /* Fill remaining space */
+    border: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }

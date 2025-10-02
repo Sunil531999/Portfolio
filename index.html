@@ -26,20 +26,25 @@
             <i class="fas fa-ethernet tech-icon"></i> <!-- Connectivity -->
             <i class="fas fa-robot tech-icon"></i> <!-- AI / Automation -->
             <i class="fas fa-cloud tech-icon"></i> <!-- Cloud Computing / IoT Platforms -->
+            <i class="fas fa-memory tech-icon"></i> <!-- Memory / Hardware -->
+            <i class="fas fa-wifi tech-icon"></i> <!-- Wireless / IoT -->
+            <i class="fas fa-sitemap tech-icon"></i> <!-- System Architecture -->
+            <i class="fas fa-project-diagram tech-icon"></i> <!-- Software Design -->
         </div>
         <div class="loader">
-            <span></span>
-            <span></span>
-            <span></span> <!-- Added third span for a more complete animation -->
-
-        </div> 
+            <i class="fas fa-laptop-code loader-icon"></i>
+            <i class="fas fa-cogs loader-icon"></i>
+            <i class="fas fa-microchip loader-icon"></i>
+        </div>
         <p class="loading-text">Loading...</p>
     </div>
     
     <div id="particles-js"></div>
         <div class="content-wrapper">
         <header>
-            <h1 id="portfolio">Portfolio</h1>
+            <div class="logo-container">
+                <h1 id="portfolio"></h1>
+            </div>
             <div class="hamburger-menu">&#9776;</div>
             <nav>
                 <ul class="nav_links">
@@ -51,7 +56,7 @@
                     <li><a href="#my-education">EDUCATION</a></li>
                     <li><a href="#my-publications">PUBLICATIONS</a></li>
                     <li><a href="#contact-me">CONTACT</a></li>
-                    <li><a href="Sunil Kumar Sharma (Resume).pdf" class="resume-button" download>RESUME</a></li>
+                    <li><a href="#" id="resume-modal-trigger" class="resume-button">View Resume</a></li>
                 </ul>
             </nav>
         </header>
@@ -60,7 +65,7 @@
             <section class="main-section" id="bio-section">
                 <div class="left-section">
                     <p class="greeting-text-p">Hi all, I'm</p>
-                    <h1 class="main-title">Sunil Kumar Sharma</h1>
+                    <h1 class="main-title"></h1>
                     <h2 class="role-title">Software Engineer | IoT Developer</h2>
                     <p class="bio">
                         I am a Computer Science Engineering graduate, passionate about Software Engineering and Embedded Systems development.
@@ -175,8 +180,8 @@
             </section>
 
             <section id="my-skills" class="section-spacing">
-                <h1 class="section-heading">Technical Skills</h1>
-                <div class="section-container skills-container">
+                <h1 class="section-heading animate-on-scroll">Technical Skills</h1>
+                <div class="section-container skills-container animate-on-scroll">
                     <div class="skill-category">
                         <h2>Programming Languages</h2>
                         <div class="skill-items">
@@ -343,6 +348,19 @@
             <span>Scopus</span>
         </a>
     </template>
+
+    <!-- Resume Modal -->
+    <div id="resume-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="Sunil Kumar Sharma (Resume).pdf" download="Sunil Kumar Sharma - Resume.pdf" class="modal-download-button">
+                    <i class="fas fa-download"></i> Download
+                </a>
+                <button class="modal-close-button">&times;</button>
+            </div>
+            <iframe src="Sunil Kumar Sharma (Resume).pdf#toolbar=0" class="resume-iframe"></iframe>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
