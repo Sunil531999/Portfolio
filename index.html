@@ -5,18 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="tech-background">
+            <!-- Add Font Awesome icons as tech icons -->
+            <i class="fas fa-code tech-icon"></i> <!-- Software Engineering -->
+            <i class="fas fa-microchip tech-icon"></i> <!-- Embedded Systems / IoT -->
+            <i class="fas fa-laptop-code tech-icon"></i> <!-- Coding / Development -->
+            <i class="fas fa-database tech-icon"></i> <!-- Data Management -->
+            <i class="fas fa-network-wired tech-icon"></i> <!-- Networking / IoT Connectivity -->
+            <i class="fas fa-server tech-icon"></i> <!-- Backend / Cloud -->
+            <i class="fas fa-terminal tech-icon"></i> <!-- Command Line / Development -->
+            <i class="fas fa-ethernet tech-icon"></i> <!-- Connectivity -->
+            <i class="fas fa-robot tech-icon"></i> <!-- AI / Automation -->
+            <i class="fas fa-cloud tech-icon"></i> <!-- Cloud Computing / IoT Platforms -->
+        </div>
+        <div class="loader">
+            <span></span>
+            <span></span>
+            <span></span> <!-- Added third span for a more complete animation -->
+
+        </div> 
+        <p class="loading-text">Loading...</p>
+    </div>
+    
     <div id="particles-js"></div>
         <div class="content-wrapper">
         <header>
             <h1 id="portfolio">Portfolio</h1>
             <nav>
+                <div class="hamburger-menu">&#9776;</div>
                 <ul class="nav_links">
                     <li><a href="#bio-section">HOME</a></li>
                     <li><a href="#about-me">ABOUT ME</a></li>
@@ -26,6 +51,7 @@
                     <li><a href="#my-education">EDUCATION</a></li>
                     <li><a href="#my-publications">PUBLICATIONS</a></li>
                     <li><a href="#contact-me">CONTACT</a></li>
+                    <li><a href="Sunil Kumar Sharma (Resume).pdf" class="resume-button" download>RESUME</a></li>
                 </ul>
             </nav>
         </header>
@@ -52,7 +78,7 @@
 
             <section id="about-me" class="section-spacing">
                 <h1 class="section-heading">About Me</h1>
-                <div class="about-container">
+                <div class="section-container">
                     <p class="about-text">
                         I am a Computer Science Engineering graduate from the University of Engineering and Management, Kolkata. I have proficiency in programming languages such as Java, C, C++, C#, Python, and Bash. I am passionate about Software Engineering, Embedded Systems, and Cyber Security. I have hands-on experience with development boards like Arduino, ESP, IoT devices, and Raspberry Pi, and various communication protocols such as UART, I2C, SPI, along with working on different architectures like AVR and ARM. I have completed numerous projects on IoT, RTOS, and embedded systems. Additionally, I have published three research papers in the field of Medical IoT Devices, which are indexed on Scopus, IEEE Xplore, Springer, and the American Journal of Electronics & Communication.
                     </p>
@@ -61,7 +87,7 @@
 
             <section id="my-experience" class="section-spacing">
                 <h1 class="section-heading">Work Experience</h1>
-                <div class="experience-container">
+                <div class="section-container">
                     
                     <div class="experience-card">
                         <h2>Software Engineer</h2>
@@ -86,7 +112,7 @@
 
             <section id="my-projects" class="section-spacing">
                 <h1 class="section-heading">Projects</h1>
-                <div class="projects">
+                <div class="section-container projects">
                     <div class="project-card">
                         <h2>MediFi : IoT Healthcare Monitoring</h2>
                         <p>An IoT device that monitors patients' vitals like SpO2, BPM, temperature, and movements. Features real-time monitoring through cloud integration and mobile/web applications.</p>
@@ -150,7 +176,7 @@
 
             <section id="my-skills" class="section-spacing">
                 <h1 class="section-heading">Technical Skills</h1>
-                <div class="skills-container">
+                <div class="section-container skills-container">
                     <div class="skill-category">
                         <h2>Programming Languages</h2>
                         <div class="skill-items">
@@ -200,7 +226,7 @@
 
             <section id="my-education" class="section-spacing">
                 <h1 class="section-heading">Academic Background</h1>
-                <div class="education">
+                <div class="section-container">
                     <div>
                         <h2><i class="fas fa-graduation-cap"></i>Graduation</h2>
                         <h3>University of Engineering and Management, Kolkata | 2023</h3>
@@ -223,7 +249,7 @@
 
             <section id="my-awards" class="section-spacing">
                 <h1 class="section-heading">Awards and Honors</h1>
-                <div class="publications">
+                <div class="section-container">
                     <div class="publication-card">
                         <h2>Vice Chancellor's Award</h2>
                         <h3>Best Scientific Mind</h3>
@@ -234,7 +260,7 @@
 
             <section id="my-publications" class="section-spacing">
                 <h1 class="section-heading">Research Publications</h1>
-                <div class="publications">
+                <div class="section-container">
                     <div class="researcher-id">
                         <a href="https://orcid.org/0000-0003-2357-9310" target="_blank" class="orcid-link">
                             <i class="fab fa-orcid"></i> ORCID: 0000-0003-2357-9310
@@ -274,15 +300,14 @@
 
             <section id="contact-me" class="section-spacing">
                 <h1 class="section-heading">Get In Touch</h1>
-                <form action="#contact-me">
-                    <input type="text" placeholder="Name">
-                    <input type="text" placeholder="Contact">
-                    <input type="email" name="email" id="email" placeholder="Email">
-                    <textarea name="description" id="description" placeholder="Message"></textarea>
-                    <button id="submit" value="submit">Send Message</button>
+                <div class="contact-container">
+                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out!</p>
+                    <a href="mailto:sunil.kumar.sharma.uemk.cse.2023@gmail.com" class="email-button">Say Hello</a>
                     <div class="divider">or</div>
-                    <p class="email-text">Email Me at <a href="mailto:qwerty.sunilsharma@gmail.com">qwerty.sunilsharma@gmail.com</a></p>
-                </form>
+                    <p class="email-text">
+                        <span>Email me at</span> <a href="mailto:sunil.kumar.sharma.uemk.cse.2023@gmail.com">sunil.kumar.sharma.uemk.cse.2023@gmail.com</a>
+                    </p>
+                </div>
             </section>
         </main>
         
@@ -297,31 +322,27 @@
 
     <!-- Create a template for social links that's used in both bio section and footer -->
     <template id="social-links">
-        <a href="https://github.com/Sunil531999" target="_blank">
+        <a href="https://github.com/Sunil531999" target="_blank" title="GitHub">
             <img src="https://github.com/fluidicon.png" alt="GitHub">
             <span>GitHub</span>
         </a>
-        <a href="https://www.linkedin.com/in/sunil-kumar-sharma-12a424237/" target="_blank">
+        <a href="https://www.linkedin.com/in/sunil-kumar-sharma-12a424237/" target="_blank" title="LinkedIn">
             <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
             <span>LinkedIn</span>
         </a>
-        <a href="https://leetcode.com/sunil53/" target="_blank">
+        <a href="https://leetcode.com/sunil53/" target="_blank" title="LeetCode">
             <img src="https://leetcode.com/_next/static/images/logo-ff2b712834cf26bf50a5de58ee27bcef.png" alt="LeetCode">
             <span>LeetCode</span>
         </a>
+        <a href="https://orcid.org/0000-0003-2357-9310" target="_blank" title="ORCID Profile">
+            <i class="fab fa-orcid"></i>
+            <span>ORCID</span>
+        </a>
+        <a href="https://www.scopus.com/authid/detail.uri?authorId=57781811400" target="_blank" title="Scopus Profile">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Scopus</span>
+        </a>
     </template>
-
-    <!-- Then use JavaScript to clone this template where needed -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const socialTemplate = document.getElementById('social-links');
-        const socialContainers = document.querySelectorAll('.social-links, .footer-links');
-        
-        socialContainers.forEach(container => {
-            container.appendChild(socialTemplate.content.cloneNode(true));
-        });
-    });
-    </script>
 
     <script src="script.js"></script>
 </body>
