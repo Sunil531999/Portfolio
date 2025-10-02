@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Hide loading screen only after all page content (including images) is fully loaded
 window.addEventListener('load', function() {
-    const minimumLoaderTime = 2000; // Minimum 2 seconds
+    const minimumLoaderTime = 4000; // Minimum 4 seconds
     const loadTime = Date.now() - performance.timing.navigationStart;
     const delay = Math.max(0, minimumLoaderTime - loadTime);
 
