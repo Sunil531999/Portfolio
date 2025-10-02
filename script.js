@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const portfolioTitle = document.getElementById('portfolio');
     portfolioTitle.innerHTML = `<span class="bracket left-bracket">&lt;</span><span class="portfolio-text">PORTFOLIO</span><span class="bracket right-bracket">&gt;</span>`;
 
-    applyTypingEffect('.main-title', 'Sunil Kumar Sharma', { speed: 150, cursorClass: 'main-title-cursor' });
+    applyTypingEffect('.main-title', 'Sunil Kumar Sharma', { speed: 200, cursorClass: 'main-title-cursor' });
 
     // Add smooth scrolling for navigation links
     document.querySelectorAll('.nav_links a[href^="#"]').forEach(anchor => {
@@ -223,8 +223,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Hide loading screen only after all page content (including images) is fully loaded
 window.addEventListener('load', function() {
-    // Add a delay to showcase the loading animation
-    setTimeout(function() {
+    const minimumLoaderTime = 2000; // Minimum 2 seconds
+    const loadTime = Date.now() - performance.timing.navigationStart;
+    const delay = Math.max(0, minimumLoaderTime - loadTime);
+
+    // Add a delay to ensure the loading animation is visible for a minimum duration
+    setTimeout(() => {
         document.body.classList.add('loaded');
-    }, 3000); // 3-second delay
+    }, delay);
 });
