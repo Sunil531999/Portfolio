@@ -34,14 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
     {
         "particles": {
             "number": {
-                "value": 40,
+                "value": 50,
                 "density": {
                     "enable": true,
                     "value_area": 800
                 }
             },
             "color": {
-                "value": "#64ffda"
+                "value": "#6366f1"
             },
             "shape": {
                 "type": ["circle", "triangle", "edge"],
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             },
             "opacity": {
-                "value": 0.5,
+                "value": 0.4,
                 "random": true,
                 "animation": {
                     "enable": true,
@@ -75,14 +75,14 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             "line_linked": {
                 "enable": true,
-                "distance": 150,
-                "color": "#64ffda",
-                "opacity": 0.2,
+                "distance": 120,
+                "color": "#6366f1",
+                "opacity": 0.15,
                 "width": 1
             },
             "move": {
                 "enable": true,
-                "speed": 1.5,
+                "speed": 1.2,
                 "direction": "none",
                 "random": true,
                 "straight": false,
@@ -104,8 +104,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Set up the portfolio title for the bracket reveal animation
-    const portfolioTitle = document.getElementById('portfolio');
-    portfolioTitle.innerHTML = `<span class="bracket left-bracket">&lt;</span><span class="portfolio-text">PORTFOLIO</span><span class="bracket right-bracket">&gt;</span>`;
+    // Portfolio text is now in HTML, animations handled by CSS
+    // const portfolioTitle = document.getElementById('portfolio');
+    // portfolioTitle.innerHTML = `<span class="bracket left-bracket">&lt;</span><span class="portfolio-text">PORTFOLIO</span><span class="bracket right-bracket">&gt;</span>`;
 
     applyTypingEffect('.main-title', 'Sunil Kumar Sharma', { speed: 200, cursorClass: 'main-title-cursor' });
 
