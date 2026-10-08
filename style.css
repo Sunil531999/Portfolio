@@ -467,6 +467,26 @@ body .content-wrapper main .profile-image img {
     }
 }
 
+body .content-wrapper .right-section {
+    width: min(100%, 280px);
+}
+
+body .content-wrapper .profile-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+}
+
+body .content-wrapper .profile-image img {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    body .content-wrapper .right-section {
+        width: min(72vw, 250px);
+    }
+}
+
 body .content-wrapper footer .footer-name {
     font-size: clamp(1rem, 1.8vw, 1.2rem);
     white-space: nowrap;
@@ -3347,5 +3367,169 @@ body .content-wrapper main .profile-image img {
 @media (max-width: 768px) {
     body .content-wrapper footer .footer-name {
         font-size: clamp(0.95rem, 3.8vw, 1.1rem);
+    }
+}
+body .content-wrapper main .right-section {
+    width: min(100%, 270px);
+    align-self: start;
+    margin-top: clamp(4.5rem, 7vw, 6rem);
+}
+body .content-wrapper main .profile-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+}
+@media (max-width: 768px) {
+    body .content-wrapper main .right-section {
+        width: min(68vw, 230px);
+        justify-self: center;
+        align-self: center;
+        margin: 0.5rem 0 1rem;
+    }
+}
+
+body .content-wrapper main .profile-image {
+    isolation: isolate;
+    overflow: visible;
+    border-radius: 48% 52% 54% 46% / 43% 48% 52% 57%;
+    background: transparent;
+    box-shadow: none;
+    animation: portrait-shape 20s ease-in-out infinite;
+    will-change: border-radius, transform;
+}
+
+body .content-wrapper main .profile-image::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 10px -9px -9px 9px;
+    border-radius: inherit;
+    background: #176b52;
+    opacity: 0.9;
+    animation: portrait-accent-shape 20s ease-in-out infinite;
+}
+
+body .content-wrapper main .profile-image img {
+    border-radius: inherit;
+    object-fit: cover;
+}
+
+body .content-wrapper main .profile-image:hover {
+    transform: translateY(-3px);
+    box-shadow: none;
+}
+
+@keyframes portrait-shape {
+    0%, 100% {
+        border-radius: 48% 52% 54% 46% / 43% 48% 52% 57%;
+        transform: translateY(0);
+    }
+    50% {
+        border-radius: 53% 47% 47% 53% / 49% 54% 46% 51%;
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes portrait-accent-shape {
+    0%, 100% { border-radius: 48% 52% 54% 46% / 43% 48% 52% 57%; }
+    50% { border-radius: 53% 47% 47% 53% / 49% 54% 46% 51%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body .content-wrapper main .profile-image,
+    body .content-wrapper main .profile-image::before {
+        animation: none;
+    }
+}
+
+/* Make the portrait treatment clearly organic and visibly animated. */
+body .content-wrapper main .right-section {
+    width: min(100%, 320px);
+    justify-self: end;
+    margin-top: clamp(4.5rem, 7vw, 6rem);
+}
+
+body .content-wrapper main .profile-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 67% 33% 58% 42% / 39% 52% 48% 61%;
+    overflow: visible;
+    animation: portrait-shape-bold 9s ease-in-out infinite;
+    filter: drop-shadow(0 14px 18px rgba(23, 107, 82, 0.12));
+}
+
+body .content-wrapper main .profile-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+    object-position: center 35%;
+}
+
+body .content-wrapper main .profile-image::before {
+    inset: 17px -18px -17px 18px;
+    border-radius: 34% 66% 43% 57% / 58% 41% 59% 42%;
+    background: linear-gradient(145deg, #176b52, #2c9874);
+    animation: portrait-accent-bold 9s ease-in-out infinite;
+}
+
+body .content-wrapper main .main-section .right-section {
+    width: min(100%, 320px);
+}
+
+@media (max-width: 768px) {
+    body .content-wrapper main .main-section .right-section {
+        width: min(78vw, 270px);
+        max-width: min(78vw, 270px);
+    }
+}
+
+body .content-wrapper main .profile-image:hover {
+    transform: translateY(-5px) rotate(-1deg);
+}
+
+@keyframes portrait-shape-bold {
+    0%, 100% {
+        border-radius: 67% 33% 58% 42% / 39% 52% 48% 61%;
+        transform: translateY(0) rotate(0deg);
+    }
+    35% {
+        border-radius: 43% 57% 38% 62% / 56% 37% 63% 44%;
+        transform: translateY(-7px) rotate(1.2deg);
+    }
+    70% {
+        border-radius: 56% 44% 67% 33% / 47% 63% 37% 53%;
+        transform: translateY(-2px) rotate(-0.8deg);
+    }
+}
+
+@keyframes portrait-accent-bold {
+    0%, 100% {
+        border-radius: 34% 66% 43% 57% / 58% 41% 59% 42%;
+        transform: translate(0, 0) rotate(0deg);
+    }
+    35% {
+        border-radius: 62% 38% 57% 43% / 40% 61% 39% 60%;
+        transform: translate(3px, -3px) rotate(-1deg);
+    }
+    70% {
+        border-radius: 41% 59% 34% 66% / 62% 43% 57% 38%;
+        transform: translate(-2px, 2px) rotate(1deg);
+    }
+}
+
+@media (max-width: 768px) {
+    body .content-wrapper main .main-section .right-section {
+        width: min(78vw, 270px);
+        max-width: min(78vw, 270px);
+        justify-self: center;
+        margin: 0.5rem 0 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body .content-wrapper main .profile-image,
+    body .content-wrapper main .profile-image::before {
+        animation: none;
     }
 }
